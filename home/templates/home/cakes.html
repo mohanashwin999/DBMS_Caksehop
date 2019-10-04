@@ -1,0 +1,164 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    {% load static %}
+    <link rel="stylesheet" href="{% static "home/css/index.css" %}">
+
+    <title>Cakes | Cakeshop</title>
+  </head>
+  <body>
+<!--navbar-->
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+  <a class="navbar-brand" href="{% url 'home:landingpage2' %}">Cake-Shop</a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+    <ul class="navbar-nav mr-auto">
+      <li class="nav-item">
+        <a class="nav-link" href="{% url 'home:landingpage2' %}">Home</a>
+      </li>
+      <li class="nav-item active">
+        <a class="nav-link" href="{% url 'home:cakes' %}">Order</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="{% url 'home:orders' %}">View Orders</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="{% url 'home:logout' %}">Logout <span class="sr-only">(current)</span></a>
+      </li>
+      </ul>
+    </div>
+</nav>
+
+<!--navbar-->
+
+  <div class="container" style="margin-top:2px;">
+  <form method="POST" action="/cakes/" >
+  <div class='row'>
+  <div class='col-md-4'>
+
+  <div class="card" style="width: 18rem;" >
+  <img src="{% static 'home/images/chocolate.jpg'%}" class="product" class="card-img-top" alt="...">
+  <div class="card-body">
+    <h5 class="card-title">Chocolate Cake</h5>
+    <center><a href="{% url 'home:weight' %}?name=Chocolate" class="btn btn-primary" name="Chocolate">Buy</a><center>
+  </div>
+</div>
+
+  </div>
+  <div class='col-md-4'>
+
+  <div class="card" style="width: 18rem;" >
+  <img src="{% static 'home/images/vanilla.jpg'%}" class="product" class="card-img-top" alt="...">
+  <div class="card-body">
+    <h5 class="card-title">Vanilla Cake</h5>
+    <center><a href="{% url 'home:weight' %}?name=Vanilla" class="btn btn-primary" name="Vanilla">Buy</a><center>
+  </div>
+</div>
+
+ 
+  </div>
+  <div class='col-md-4'>
+  
+    <div class="card" style="width: 18rem;" >
+  <img src="{% static 'home/images/mango.jpg'%}" class="product" class="card-img-top" alt="...">
+  <div class="card-body">
+    <h5 class="card-title">Mango Cake</h5>
+    <center><a href="{% url 'home:weight' %}?name=Mango" class="btn btn-primary" name="Mango">Buy</a><center>
+  </div>
+</div>
+
+
+  </div>
+  </div>
+  <div class='row'>
+  <div class='col-md-4'>
+  
+    <div class="card" style="width: 18rem;" >
+  <img src="{% static 'home/images/darkforest.jpg'%}" class="product" class="card-img-top" alt="...">
+  <div class="card-body">
+    <h5 class="card-title">Dark-Forest Cake</h5>
+    <center><a href="{% url 'home:weight' %}?name=Darkforest" class="btn btn-primary" name="Darkforest">Buy</a><center>
+  </div>
+</div>
+
+  
+  </div>
+  <div class='col-md-4'>
+  
+    <div class="card" style="width: 18rem;" >
+  <img src="{% static 'home/images/pista.jpg'%}" class="product" class="card-img-top" alt="...">
+  <div class="card-body">
+    <h5 class="card-title">Pista Cake</h5>
+    <center><a href="{% url 'home:weight' %}?name=Pista" class="btn btn-primary" name="Pista">Buy</a><center>
+  </div>
+</div>
+
+  
+  </div>
+  <div class='col-md-4'>
+  
+  <div class="card" style="width: 18rem;" >
+  <img src="{% static 'home/images/whiteforest.jpg'%}" class="product" class="card-img-top" alt="...">
+  <div class="card-body">
+    <h5 class="card-title">White-Forest Cake</h5>
+    <center><a href="{% url 'home:weight' %}?name=Whiteforest" class="btn btn-primary" name="White-forest">Buy</a><center>
+  </div>
+</div>
+  
+  </div>
+  </div>
+  <div class='row'>
+  <div class='col-md-4'>
+  
+  <div class="card" style="width: 18rem;" >
+  <img src="{% static 'home/images/strawberry.jpg'%}" class="product" class="card-img-top" alt="...">
+  <div class="card-body">
+    <h5 class="card-title">Strawberry Cake</h5>
+    <center><a href="{% url 'home:weight' %}?name=Strawberry" class="btn btn-primary" name="Strawberry">Buy</a><center>
+  </div>
+</div>
+  
+  </div>
+  <div class='col-md-4'>
+
+  <div class="card" style="width: 18rem;" >
+  <img src="{% static 'home/images/blueberry.jpg'%}" class="product" class="card-img-top" alt="...">
+  <div class="card-body">
+    <h5 class="card-title">Blueberry Cake</h5>
+    <center><a href="{% url 'home:weight' %}?name=Blueberry" class="btn btn-primary" name="Blueberry">Buy</a><center>
+  </div>
+</div>
+  
+  
+  </div>
+  <div class='col-md-4'>
+
+  <div class="card" style="width: 18rem;" >
+  <img src="{% static 'home/images/pineapple.jpg'%}" class="product" class="card-img-top" alt="...">
+  <div class="card-body">
+    <h5 class="card-title">Pineapple Cake</h5>
+    <center><a href="{% url 'home:weight' %}?name=Pineapple" class="btn btn-primary" name="Pineapple ">Buy</a><center>
+  </div>
+</div>
+  
+  
+  </div>
+  
+  </form>
+  </div>    
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+  </body>
+</html>
