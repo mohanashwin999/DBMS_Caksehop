@@ -10,44 +10,54 @@
     {% load static %}
     <link rel="stylesheet" href="{% static "home/css/index.css" %}">
 
-    <title>Login|Cakeshop</title>
+    <title>Orders | Cakeshop</title>
   </head>
   <body>
 <!--navbar-->
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-  <a class="navbar-brand" href="{% url 'home:landingpage2' %}">Cake-Shop</a>
+   <a class="navbar-brand" href="{% url 'home:landingpage3' %}">Cake-Shop</a> 
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
   </button>
 
   <div class="collapse navbar-collapse" id="navbarSupportedContent">
     <ul class="navbar-nav mr-auto">
-      <li class="nav-item active">
-        <a class="nav-link" href="{% url 'home:landingpage2' %}">Home</a>
-      </li>
       <li class="nav-item">
-        <a class="nav-link" href="{% url 'home:logout' %}">Logout <span class="sr-only">(current)</span></a>
+        <a class="nav-link" href="{% url 'home:landingpage3' %}">Home</a>
       </li>
       </ul>
     </div>
 </nav>
 
 <!--navbar-->
-<center>
-  <div class="container-fluid">
-    <form method="POST" action="/feedback/" class="register">
-    {% csrf_token %}
-    <div class="form-group">
-  <label for="formGroupExampleInput5">Feedback</label>
-    <textarea name="feedback" class="form-control" id="formGroupExampleInput3" placeholder="Feedback" required></textarea>
-  </div>
-  <button type="submit" class="btn btn-primary">Submit</button>
-</form>
 
+  <div class="container" style="margin-top:2px;">
 
-  	</div>
-</center> 
-
+  <h2>Pending Orders</h2>
+  <table class="table">
+  <thead class="thead-dark">
+    <tr>
+      <th scope="col">Order No</th>
+      <th scope="col">Cake Name</th>
+      <th scope="col">Weight</th>
+      <th scope="col">Price</th>
+      <th scope="col"></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+    {% for o1 in orders %}
+      <th scope="row">{{ o1.id }}</th>
+      <td>{{ o1.cake_name }}</td>
+      <td>{{ o1.weight }}</td>
+      <td>{{ o1.price }}</td>
+      <td><a href="{% url 'home:vieworders' %}?id={{ o1.id }}"><button type="submit" class="btn btn-primary">Delivered</button></a></td>
+    </tr>
+    {% endfor %}
+  </tbody>
+</table>
+</div>
+      
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
@@ -55,4 +65,3 @@
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
   </body>
 </html>
-

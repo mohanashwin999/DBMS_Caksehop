@@ -2,6 +2,9 @@ from django.shortcuts import render,redirect
 from .models import *
 from django.http import HttpResponse
 from django.db import connection
+from django.contrib.auth.models import User
+from django.contrib.auth import authenticate,login,logout
+from django.contrib.auth.decorators import login_required
 from .cn import *
 
 current_user={'username':'', 'email':'','address':'', 'fname':'', 'lname':'', 'status':False,'cake':''}
@@ -26,7 +29,7 @@ def signup(req):
     else:
         return render(req,'home/signup.html')
 
-def login(req):
+def login1(req):
     if req.method=='POST':
         uname=req.POST.get('username')
         pswrd=req.POST.get('password')
@@ -175,3 +178,41 @@ def delete(req):
             return render(req,'home/delete.html')
     else:
         return redirect('home:login')
+
+def loginadmin(req):
+    if req.method=='POST':
+        user=authenticate(username=req.POST.get('username'),
+        password=req.POST.get('password'))
+        if user:
+            login(req,user)
+            return redirect('home:landingpage3')
+        else:
+            return HttpResponse('Invalid credentials or Access Blocked!')
+    else:
+        return render(req,'home/adminlogin.html')
+
+
+def view_pending_order(req):
+    o=order.objects.raw("select * from home_order as h inner join home_price_calculate as p  on h.weight=p.weight where h.delivered_status=0 order by h.id desc")
+    if req.GET.get('id'):
+        i=req.GET['id']
+        with connection.cursor() as cursor:
+                        cursor.execute('update home_order set delivered_status =1 where id=%s',[i])
+    return render(req,"home/vieworders.html",{'orders':o})
+
+@login_required
+def landingpage3(req):
+    return render(req,'home/landingpage3.html')
+@login_required
+def view_users(req):
+    u=user.objects.raw('select * from home_user order by timestamp desc')
+    return render(req,'home/viewusers.html',{'users':u})
+@login_required
+def view_feedbacks(req):
+    u=user.objects.raw('select * from home_feedback order by timestamp desc')
+    return render(req,'home/viewfeedback.html',{'feedbacks':u})
+
+@login_required
+def logoutadmin(req):
+    logout(req)
+    return redirect('home:adminlogin')

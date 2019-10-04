@@ -10,70 +10,54 @@
     {% load static %}
     <link rel="stylesheet" href="{% static "home/css/index.css" %}">
 
-    <title>Sign-Up | Cakeshop</title>
+    <title>Admin Login | Cakeshop</title>
   </head>
-  <body>
+  <body background: "{% static 'home/background.jpg' %}">
 <!--navbar-->
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-  <a class="navbar-brand" href="#">Cake-Shop</a>
+  <a class="navbar-brand" href="{% url 'home:landingpage' %}">Cake-Shop</a>
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
   </button>
 
   <div class="collapse navbar-collapse" id="navbarSupportedContent">
     <ul class="navbar-nav mr-auto">
-    <li class="nav-item">
+      <li class="nav-item">
         <a class="nav-link" href="{% url 'home:landingpage' %}">Home</a>
       </li>
-          <li class="nav-item active">
+      <li class="nav-item">
         <a class="nav-link" href="{% url 'home:signup' %}">Sign Up</a>
       </li>
       <li class="nav-item">
         <a class="nav-link" href="{% url 'home:login' %}">Log in <span class="sr-only">(current)</span></a>
       </li>
-      <li class="nav-item">
+      <li class="nav-item active">
         <a class="nav-link" href="{% url 'home:adminlogin' %}">Admin Log in <span class="sr-only">(current)</span></a>
       </li>
+      
       </ul>
-  </div>
+    </div>
 </nav>
 
 <!--navbar-->
 <center>
   <div class="container-fluid">
-    <form method="POST" action="/signup/" class="register">
+    <form method="POST"  class="register">
     {% csrf_token %}
     {{error}}
-  <div class="form-group" >
-    <label for="formGroupExampleInput">Email ID</label>
-    <input type="email" name="email" class="form-control" id="formGroupExampleInput" placeholder="Email  ID" required>
+    <h4>Admin Login</h4>
+  <div class="form-group">
+    <label for="exampleInputEmail1">Username</label>
+    <input class="form-control" id="exampleInputEmail1"  name="username" type="text" placeholder="Username" required>
   </div>
   <div class="form-group">
-    <label for="formGroupExampleInput2">First Name</label>
-    <input type="text" name="fname" class="form-control" id="formGroupExampleInput2" placeholder="First Name" required>
+    <label for="exampleInputPassword1">Password</label>
+    <input type="password" name="password" class="form-control" id="exampleInputPassword1" placeholder="Password">
   </div>
-  <div class="form-group">
-    <label for="formGroupExampleInput3">Last Name</label>
-    <input type="text" name="lname" class="form-control" id="formGroupExampleInput3" placeholder="Last Name" required>
-  </div>
-  <div class="form-group">
-  <label for="formGroupExampleInput5">Address</label>
-    <textarea name="address" class="form-control" id="formGroupExampleInput3" placeholder="address" required></textarea>
-  </div>
-  <div class="form-group">
-    <label for="formGroupExampleInput4">Username</label>
-    <input type="text" name="username" class="form-control" id="formGroupExampleInput4" placeholder="Username" required>
-  </div>
-    <div class="form-group">
-    <label for="formGroupExampleInput5">Password</label>
-    <input type="password" name="password" class="form-control" id="formGroupExampleInput3" placeholder="Password" required>
-  </div>
-     <button type="submit" class="btn btn-primary">Submit</button>
-
+  <button type="submit" class="btn btn-primary">Submit</button>
 </form>
 
-Already have a account?<a href={% url 'home:login' %}>Log In</a>
-  	</div>
+	</div>
 </center> 
 
     <!-- Optional JavaScript -->
